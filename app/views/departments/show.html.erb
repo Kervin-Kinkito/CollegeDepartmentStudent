@@ -1,0 +1,35 @@
+<p style="color: green"><%= notice %></p>
+
+<%# <%= render @department %>
+
+<div>
+  <p>
+  <strong>Name of Department:</strong>
+  <%= @department.name %>
+  </p>
+
+  <h3>List of Students: </h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Year & Level</th>
+        <th>Course</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @department.students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.yearLevel %></td>
+        <td><%= student.course %></td>
+        <td><%= link_to 'Show Student', student_path(student) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to "Edit this department", edit_department_path(@department) %> |
+  <%= link_to "Back to departments", departments_path %>
+  <%= button_to "Destroy this department", @department, method: :delete %>
+</div>

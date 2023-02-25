@@ -1,0 +1,31 @@
+<p style="color: green"><%= notice %></p>
+
+<%# <%= render @college %>
+
+<div>
+  <p>
+  <strong>Name:</strong>
+  <%= @college.name %>
+  </p>
+
+  <h3>List of Departments: </h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @college.departments.each do |department| %>
+      <tr>
+        <td><%= department.name %></td>
+        <td><%= link_to 'Show Department', department_path(department) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to "Edit this college", edit_college_path(@college) %> |
+  <%= link_to "Back to colleges", colleges_path %>
+  <%= button_to "Destroy this college", @college, method: :delete %>
+</div>
